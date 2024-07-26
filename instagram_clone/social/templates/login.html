@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <div class="login-main-container">
+        <div class="login-container">
+            <div class="login-box">
+                <h1>Instagram</h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder=" username or email address">
+                    <input type="password" name="password" placeholder="Password">
+                    <button type="submit">Log in</button>
+                </form>
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+                <a href="#" class="fb-login"><i class="fa-brands fa-square-facebook"></i>Log in with Facebook</a>
+                <a href="#" class="forgot-p">Forgotten your password?</a>
+            </div>
+            <div class="signup-box">
+                <p>Don't have an account? <a href="/Registration">Sign up</a></p>
+            </div>
+            <div class="get-app">
+                <p>Get the app.</p>
+                <div class="app-stores">
+                    <img src="../static/images/playstore.png" alt="Get it on Google Play">
+                    <img src="../static/images/microsoft.png" alt="Get it from Microsoft">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
