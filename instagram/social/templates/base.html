@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Instagram</title>{% endblock %}
+    <script src="https://kit.fontawesome.com/b2a542e409.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    {% if request.user.username %}
+    <div class="sidebar">
+        <div class="logo">Instagram</div>
+        <li class="siderbar-menu"><a href="home" ><i class="fa-solid fa-house"></i>Home</a></li>
+        <li class="siderbar-menu"><a href="#search"><i class="fa-solid fa-magnifying-glass"></i>Search</a></li>
+        <li class="siderbar-menu"><a href="#explore"><i class="fa-solid fa-compass"></i>Explore</a></li>
+        <li class="siderbar-menu"><a href="#reels"><i class="fa-solid fa-play"></i>Reels</a></li>
+        <li class="siderbar-menu"><a href="#messages"><i class="fa-brands fa-facebook-messenger"></i>Messages</a></li>
+        <li class="siderbar-menu"><a href="#notifications"><i class="fa-solid fa-heart"></i>Notifications</a></li>
+        <li class="siderbar-menu"><a href="/createpost"><i class="fa-solid fa-plus"></i>Create</a></li>
+        <li class="siderbar-menu"><a href="profile"><i><img src="{{ profile.profile_picture.url }}" alt="profile" ></i>Profile</a></li>
+        <li class="siderbar-menu-bottom"><a href="#more"><i class="fa-solid fa-bars"></i>More</a></li>
+    </div>
+    {% else %}
+        <nav>
+            <div class="navbar">
+                <div class="navbar-logo">Instagram</div>
+                <div class="navbar-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" name="search" placeholder="Search">
+                </div>
+                <div class="navbar-menu">
+                    <li class="login-btn"><a href="/">Log in</a></li>
+                    <li class="signup-btn"><a href="/Registration">Sign up</a></li>
+                </div>
+            </div>
+        </nav>
+        <hr>
+    {% endif %}
+    {% block container %}{% endblock %}
+    {% block footer %}
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="index">
+<div class="left"></div>
+<div class="right">
+    <div class="Profile">      
+      <div class="profile-container">
+        <div class="profile-header">
+            
+            <div class="profile-pic">
+                <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}'s Profile Picture" >
+            </div>
+            <div class="profile-info">
+
+                <div class="profile-info-inner">
+                    <h1 class="username">{{ profile.user.username }}</h1>
+                    <li class="edit-profile"><a href="{% url 'Editprofile' %}" >Edit Profile</a></li>
+                    <li class="view-archive"><a href="">View archive</a></li>
+                </div>
+                <div class="profile-stats">
+                    <div class="stats">
+                        <span class="count">0</span> posts
+                    </div>
+                    <div class="stats">
+                        <span class="count">0</span> followers
+                    </div>
+                    <div class="stats">
+                        <span class="count">0</span> following
+                    </div>
+                </div>
+                <div class="profile-bio">
+                    <h2 class="name">{{ profile.user.first_name }} {{ profile.user.last_name }}</h2>
+                    <p class="bio">{{ profile.bio }}</p>
+                </div>
+            </div>
+           
+        </div>
+       </div>
+    </div>
+    <hr class="profile-line">
+<!--Post button section-->
+    <div class="post-main">
+        <li class="post"><a href=""><i class="fa-solid fa-film"></i>POST</a></li>
+        <li class="post"><a href=""><i class="fa-solid fa-bookmark"></i>SAVED</a></li>
+        <li class="post"><a href=""><i class="fa-solid fa-user-tag"></i>TAGED</a></li>
+    </div>
+    
+    <div class="post-content-main">
+        <div class="post-content">
+            {% for i in post %}
+            <div class="post-item">
+                <a href="">
+                <img src="{{i.image.url}}" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock  %}

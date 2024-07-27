@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block container %}
+<div class="index">
+<div class="left"></div>
+<div class="right">
+    <div class="createpost-main">
+        <div class="createpost">
+            <div class="header">
+                <h1>Create new post</h1>
+            </div>
+            <form class="upload-area" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="file-upload" class="custom-file-upload">
+                    <div class="icon"></div>
+                    <p>Drag photos and videos here</p>
+                    <input id="file-upload" name="image" type="file" required />
+                </label>
+                <button type="button" onclick="document.getElementById('file-upload').click()" >Select from computer</button>
+                <div class="caption-area">
+                    <textarea placeholder="Write a caption..." name="caption" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock  %}
