@@ -13,7 +13,8 @@ class Profile(models.Model):
         return self.user.username
     
 class Post(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='posts/')
     caption = models.TextField(blank=True)
     created_on = models.DateField(default=datetime.date.today)

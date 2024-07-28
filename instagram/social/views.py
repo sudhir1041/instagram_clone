@@ -48,10 +48,9 @@ def profile(req):
     user=req.user
     try:
         profile=Profile.objects.get(user=user)
-        post = Post.objects.filter(user=user)
-        print(post)
     except Profile.DoesNotExist:
         profile = Profile.objects.create(user=user)
+    post = Post.objects.filter(user=user)
     return render(req,'Profile.html',{'profile':profile,'post':post})
 
 @login_required
@@ -75,7 +74,7 @@ def home(req):
     user = req.user
     if user:
         profile = Profile.objects.get(user=user)
-        post = Post.objects.filter(user=user)
+        post = Post.objects.all().order_by('-created_on')
         return render(req,'index.html',{'profile':profile,'post':post})
     else:
         return redirect('/')
@@ -85,9 +84,9 @@ def createpost(request):
     if request.method == 'POST':
         image = request.FILES.get('image')
         caption = request.POST.get('caption')
-
+        profile = Profile.objects.get(user=user)
         if image and caption:
-            Post.objects.create(user=user, image=image, caption=caption)
+            Post.objects.create(user=user,profile=profile, image=image, caption=caption)
             return redirect('home')
         else:
             messages.error(request, 'Add both image and caption.')
