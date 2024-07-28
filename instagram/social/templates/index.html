@@ -1,10 +1,44 @@
 {% extends "base.html" %}
 
 {% block container %}
+
 <div class="index">
-<div class="left"></div>
-<div class="right">
-    <h1>Hello</h1>
+    <div class="left"></div>
+    <div class="right">
+        <div class="instagram-post-main">
+            <div class="instagram-post-inner">
+
+                {% for post in post %}
+
+                <div class="instagram-post">
+                    <div class="post-header-icon">
+                        <img src="{{profile.profile_picture.url}}" alt="Profile Picture" class="profile-pic-icon">
+                        <div class="profile-info-detail">
+                            <span class="username">{{profile.user.username}}</span>
+                            <span class="post-time">{{profile.created_on}}</span>
+                        </div>
+                        <div class="more-options">...</div>
+                    </div>
+                    <div class="post-content-home">
+                        <div class="post-text">
+                            <img src="{{post.image.url}}" width="100%" height="100%" alt="">
+                        </div>
+                    </div>
+                    <div class="post-footer">
+                        <div class="likes">
+                            <span>2,810 likes</span>
+                        </div>
+                        <div class="comments">
+                            <span>View all 43 comments</span>
+                        </div>
+                        <div class="add-comment">
+                            <span>Add a comment...</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-{% endblock  %}
+{% endblock %}

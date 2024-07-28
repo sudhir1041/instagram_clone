@@ -72,7 +72,13 @@ def Editprofile(req):
     return render(req, 'Editprofile.html',{'profile': profile})
     
 def home(req):
-    return render(req,'index.html')
+    user = req.user
+    if user:
+        profile = Profile.objects.get(user=user)
+        post = Post.objects.filter(user=user)
+        return render(req,'index.html',{'profile':profile,'post':post})
+    else:
+        return redirect('/')
 
 def createpost(request):
     user = request.user
@@ -87,3 +93,4 @@ def createpost(request):
             messages.error(request, 'Add both image and caption.')
             return redirect('createpost')  
     return render(request, 'createPost.html')
+
