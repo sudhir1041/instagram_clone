@@ -34,8 +34,8 @@
                                     {% endif %}
                                 </button>
                             </form>
-                            <a href=""><i class="fa-regular fa-comment"></i></a>
-                            <a href=""><i class="fa-brands fa-telegram"></i></a>
+                            <button id="open-btn"><i class="fa-regular fa-comment"></i></button>
+                            <button><i class="fa-brands fa-telegram"></i></button>
                         </div>
                         <div class="add-comment">
                             <span>{{ post.likes.count }}</span> likes
@@ -50,3 +50,4 @@
     </div>
 </div>
 {% endblock %}
+

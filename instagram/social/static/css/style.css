@@ -778,15 +778,8 @@ form input {
     border: none;
     font-size: 20px;
     padding: 10px;
+    cursor: pointer;
 }
-.post-footer .likes a{
-    text-decoration: none;
-    background-color: white;
-    border: none;
-    font-size: 20px;
-    padding: 10px;
-}
-
 .likes,
 .comments,
 .add-comment {
