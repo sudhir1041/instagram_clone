@@ -17,25 +17,27 @@
                             <span class="username">{{post.user.username}}</span>
                             <span class="post-time">{{post.created_on}}</span>
                         </div>
-                        <div class="more-options">...</div>
+                        <a href="">Follow</a>
+                        <div class="more-options"><i class="fa-solid fa-ellipsis-vertical"></i></div>
                     </div>
                     <div class="post-content-home">
                         <div class="post-text">
-                            <img src="{{post.image.url}}" width="100%" height="100%" alt="">
+                            <img src="{{post.image.url}}" alt="">
                         </div>
                     </div>
-                    <div class="post-footer">
+                    <div class="post-footer">  
                         <div class="likes">
-                            <span>2,810 likes</span>
-                        </div>
-                        <div class="comments">
-                            <span>View all 43 comments</span>
+                            <a href=""><i class="fa-regular fa-heart"></i></a>
+                            <a href=""><i class="fa-regular fa-comment"></i></a>
+                            <a href=""><i class="fa-brands fa-telegram"></i></a>
                         </div>
                         <div class="add-comment">
-                            <span>Add a comment...</span>
+                            <a href="">2,810 likes</a>
+                            <a href="">View All Comments</a>
                         </div>
                     </div>
                 </div>
+                <hr>
                 {% endfor %}
             </div>
         </div>

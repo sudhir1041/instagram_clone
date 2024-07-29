@@ -93,3 +93,7 @@ def createpost(request):
             return redirect('createpost')  
     return render(request, 'createPost.html')
 
+def like(req,id):
+    user=req.user
+    
+
