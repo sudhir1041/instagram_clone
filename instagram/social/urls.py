@@ -11,4 +11,5 @@ urlpatterns = [
     path('profile',profile,name='profile'),
     path('Editprofile',Editprofile,name='Editprofile'),
     path('createpost',createpost,name='createpost'),
+    path('post/<int:post_id>/like/', like_post, name='like_post'),
 ]

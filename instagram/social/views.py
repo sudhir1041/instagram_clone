@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
+from django.http import JsonResponse
 
 def Registration(req):
     if req.method=='POST':
@@ -93,7 +94,18 @@ def createpost(request):
             return redirect('createpost')  
     return render(request, 'createPost.html')
 
-def like(req,id):
-    user=req.user
-    
+@login_required
+def like_post(request, post_id):
+    try:
+        post = Post.objects.get(id=post_id)
+    except Post.DoesNotExist:
+        messages.error(request, "Post not found.")
+        return redirect('home')
 
+    user = request.user
+    like, created = Like.objects.get_or_create(user=user, post=post)
+
+    if not created:
+        like.delete()
+
+    return redirect(request.META.get('HTTP_REFERER', 'home'))

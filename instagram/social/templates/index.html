@@ -1,38 +1,44 @@
 {% extends "base.html" %}
 
 {% block container %}
-
 <div class="index">
     <div class="left"></div>
     <div class="right">
         <div class="instagram-post-main">
             <div class="instagram-post-inner">
-
                 {% for post in post %}
-
-                <div class="instagram-post">
+                <div class="instagram-post" id="post-{{ post.id }}">
                     <div class="post-header-icon">
-                        <img src="{{post.profile.profile_picture.url}}" alt="Profile Picture" class="profile-pic-icon">
+                        <img src="{{ post.profile.profile_picture.url }}" alt="Profile Picture" class="profile-pic-icon">
                         <div class="profile-info-detail">
-                            <span class="username">{{post.user.username}}</span>
-                            <span class="post-time">{{post.created_on}}</span>
+                            <span class="username">{{ post.user.username }}</span>
+                            <span class="post-time">{{ post.created_on }}</span>
                         </div>
                         <a href="">Follow</a>
                         <div class="more-options"><i class="fa-solid fa-ellipsis-vertical"></i></div>
                     </div>
                     <div class="post-content-home">
                         <div class="post-text">
-                            <img src="{{post.image.url}}" alt="">
+                            <img src="{{ post.image.url }}" alt="">
                         </div>
                     </div>
-                    <div class="post-footer">  
+                    <div class="post-footer">
                         <div class="likes">
-                            <a href=""><i class="fa-regular fa-heart"></i></a>
+                            <form action="{% url 'like_post' post.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="like-btn" style="background:none;border:none;">
+                                    {% if request.user in post.likes.all %}
+                                        <i class="fa-solid fa-heart"></i>
+                                    {% else %}
+                                        <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                </button>
+                            </form>
                             <a href=""><i class="fa-regular fa-comment"></i></a>
                             <a href=""><i class="fa-brands fa-telegram"></i></a>
                         </div>
                         <div class="add-comment">
-                            <a href="">2,810 likes</a>
+                            <span>{{ post.likes.count }}</span> likes
                             <a href="">View All Comments</a>
                         </div>
                     </div>
